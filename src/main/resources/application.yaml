@@ -1,0 +1,13 @@
+spring:
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+  datasource:
+    generate-unique-name: false
+    url: jdbc:h2:./devdb
+    username: sa
+  h2:
+    console:
+      enable: true
+      path: /h2console/
