@@ -2,6 +2,7 @@ package com.smartpro.entity;
 
 import com.smartpro.enums.IssueStatusEnum;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -13,6 +14,7 @@ import java.util.Date;
 @Table(name = "issue_history")
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
 public class IssueHistory extends BaseEntity{
 
     @Id
