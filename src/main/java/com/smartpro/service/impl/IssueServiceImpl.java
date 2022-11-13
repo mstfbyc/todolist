@@ -48,7 +48,7 @@ public class IssueServiceImpl implements IssueService {
 
     @Override
     public IssueDto getById(Long id) {
-        Issue issue = issueRepository.findById(id).get();
+        Issue issue = issueRepository.findById(id).orElse(new Issue());
         return modelMapper.map(issue,IssueDto.class);
     }
 

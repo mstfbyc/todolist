@@ -16,8 +16,8 @@ public class IssueController {
         this.issueServiceImpl = issueServiceImpl;
     }
 
-    @GetMapping("{id}")
-    public ResponseEntity<IssueDto> getById(@PathVariable(value = "id", required = true) Long id){
+    @GetMapping("getById")
+    public ResponseEntity<IssueDto> getById(@RequestParam(required = true, value="id") Long id){
         IssueDto issueDto = issueServiceImpl.getById(id);
         return ResponseEntity.ok(issueDto);
     }
