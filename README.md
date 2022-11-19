@@ -9,3 +9,10 @@ http://localhost:8080/h2console/
 user:sa
 password:
 Database:jdbc:h2:./devdb
+logging:
+  level:
+    root: info
+    org:
+      springframework:
+        web: debug
+      hibernate: debug
