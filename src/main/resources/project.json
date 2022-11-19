@@ -1,0 +1,46 @@
+[
+  {
+    "_class": "com.smartpro.entity.Project",
+    "projectCode": "IM",
+    "projectName": "Issue Manager Project"
+  },
+  {
+    "_class": "com.smartpro.entity.Project",
+    "projectCode": "ERP-S",
+    "projectName": "ERP Project for Sales"
+  },
+  {
+    "_class": "com.smartpro.entity.Project",
+    "projectCode": "CRM-S",
+    "projectName": "CRM Project for Sales"
+  },
+  {
+    "_class": "com.smartpro.entity.Project",
+    "projectCode": "ERP-B",
+    "projectName": "ERP Project for Bussiness"
+  },
+  {
+    "_class": "com.smartpro.entity.Project",
+    "projectCode": "CRM-B",
+    "projectName": "CRM Project for Bussiness"
+  },
+  {
+    "_class": "com.smartpro.entity.Project",
+    "projectCode": "TP",
+    "projectName": "Test Project"
+  },
+  {
+    "_class": "com.smartpro.entity.User",
+    "username": "mustafa",
+    "password": "test123!",
+    "nameSurname": "Mustafa BOYACI",
+    "email": "mustafa.boyaci@smartpro.com"
+  },
+  {
+    "_class": "com.smartpro.entity.User",
+    "username": "jdoe",
+    "password": "jdoe",
+    "nameSurname": "Jonh Doe",
+    "email": "jonhdoe@smartpro.com"
+  }
+]

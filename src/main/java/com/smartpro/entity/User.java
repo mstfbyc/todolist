@@ -14,7 +14,7 @@ import java.util.List;
 @NoArgsConstructor
 public class User extends BaseEntity {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="id")
     private Long id;
 
@@ -26,6 +26,9 @@ public class User extends BaseEntity {
 
     @Column(name = "email", length = 100)
     private String email;
+
+    @Column(name="name_surname", length = 150)
+    private String nameSurname;
 
     @JoinColumn(name = "assignee_user_id")
     @OneToMany( fetch = FetchType.LAZY)

@@ -11,3 +11,11 @@ spring:
     console:
       enable: true
       path: /h2console/
+
+logging:
+  level:
+    root: INFO
+    org:
+      springframework:
+        web: DEBUG
+        hibernate: DEBUG
