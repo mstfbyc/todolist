@@ -1,7 +1,7 @@
 package com.smartpro.service.impl;
 
 import com.smartpro.dto.UserDto;
-import com.smartpro.entity.User;
+import com.smartpro.entity.Users;
 import com.smartpro.repository.UserRepository;
 import com.smartpro.service.UserService;
 import com.smartpro.util.TPage;
@@ -27,7 +27,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UserDto save(UserDto userDto) {
-        User user = modelMapper.map(userDto, User.class);
+        Users user = modelMapper.map(userDto, Users.class);
         user = userRepository.save(user);
         userDto.setId(user.getId());
         return userDto;
@@ -35,13 +35,13 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UserDto getById(Long id) {
-        User user = userRepository.findById(id).orElse(new User());
+        Users user = userRepository.findById(id).orElse(new Users());
         return modelMapper.map(user, UserDto.class);
     }
 
     @Override
     public UserDto getByUsername(String username) {
-        User user = userRepository.findByUsername(username).orElse(null);
+        Users user = userRepository.findByUsername(username).orElse(null);
         if(user == null){
             throw new IllegalArgumentException("Username not exist");
         }
@@ -50,7 +50,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public TPage<UserDto> getAllPageable(Pageable pageable) {
-        Page<User> data = userRepository.findAll(pageable);
+        Page<Users> data = userRepository.findAll(pageable);
         TPage<UserDto> response = new TPage<>();
         response.setStat(data, Arrays.asList(modelMapper.map(data,UserDto[].class)));
         return response;
@@ -58,7 +58,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public List<UserDto> getAll() {
-        List<User> userList = userRepository.findAll();
+        List<Users> userList = userRepository.findAll();
         return Arrays.asList(modelMapper.map(userList,UserDto[].class));
     }
 }

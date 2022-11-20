@@ -2,13 +2,12 @@ package com.smartpro.service.impl;
 
 import com.smartpro.dto.ProjectDto;
 import com.smartpro.entity.Project;
-import com.smartpro.entity.User;
+import com.smartpro.entity.Users;
 import com.smartpro.repository.ProjectRepository;
 import com.smartpro.repository.UserRepository;
 import com.smartpro.service.ProjectService;
 import com.smartpro.util.TPage;
 import org.modelmapper.ModelMapper;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -40,7 +39,7 @@ public class ProjectServiceImpl implements ProjectService {
             throw new IllegalArgumentException("Project code Already Exist");
         }
         Project project = modelMapper.map(projectDto,Project.class);
-        User user = userRepository.findById(projectDto.getManagerId()).orElse(null);
+        Users user = userRepository.findById(projectDto.getManagerId()).orElse(null);
         project.setManager(user);
         project = projectRepository.save(project);
         projectDto.setId(project.getId());

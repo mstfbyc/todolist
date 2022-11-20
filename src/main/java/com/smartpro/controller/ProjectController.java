@@ -5,6 +5,7 @@ import com.smartpro.service.impl.ProjectServiceImpl;
 import com.smartpro.util.ApiPaths;
 import com.smartpro.util.TPage;
 
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
@@ -15,8 +16,8 @@ import java.util.List;
 
 @RestController
 @RequestMapping(ApiPaths.ProjectCtrl.CTRL)
-@CrossOrigin
 @Slf4j
+@SecurityRequirement(name = "todolist")
 public class ProjectController {
     //GET -sorgu işlemleri için
     //POST - kayıt ekleme

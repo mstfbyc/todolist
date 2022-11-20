@@ -38,7 +38,7 @@ public class IssueHistory extends BaseEntity{
 
     @JoinColumn(name = "assignee_user_id")
     @ManyToOne(optional = true, fetch = FetchType.LAZY)
-    private User assignee;
+    private Users assignee;
 
     @JoinColumn(name = "issue_id")
     @ManyToOne(optional = true, fetch = FetchType.LAZY)
