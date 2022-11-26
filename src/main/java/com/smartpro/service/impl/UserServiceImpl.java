@@ -3,16 +3,20 @@ package com.smartpro.service.impl;
 import com.smartpro.dto.UserDto;
 import com.smartpro.entity.Users;
 import com.smartpro.repository.UserRepository;
+import com.smartpro.request.RegistirationRequest;
 import com.smartpro.service.UserService;
 import com.smartpro.util.TPage;
 import org.modelmapper.ModelMapper;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.Arrays;
 import java.util.List;
 
+@Transactional
 @Service
 public class UserServiceImpl implements UserService {
 
@@ -20,9 +24,12 @@ public class UserServiceImpl implements UserService {
 
     private final ModelMapper modelMapper;
 
-    public UserServiceImpl(UserRepository userRepository, ModelMapper modelMapper) {
+    private final PasswordEncoder encoder;
+
+    public UserServiceImpl(UserRepository userRepository, ModelMapper modelMapper, PasswordEncoder encoder) {
         this.userRepository = userRepository;
         this.modelMapper = modelMapper;
+        this.encoder = encoder;
     }
 
     @Override
@@ -60,5 +67,20 @@ public class UserServiceImpl implements UserService {
     public List<UserDto> getAll() {
         List<Users> userList = userRepository.findAll();
         return Arrays.asList(modelMapper.map(userList,UserDto[].class));
+    }
+
+
+    public Boolean register(RegistirationRequest request){
+        try{
+            Users user = new Users();
+            user.setEmail(request.getEmail());
+            user.setNameSurname(request.getNameSurname());
+            user.setPassword(encoder.encode(request.getPassword()));
+            user.setUsername(request.getUsername());
+            userRepository.save(user);
+            return Boolean.TRUE;
+        }catch (Exception e){
+            return Boolean.FALSE;
+        }
     }
 }
